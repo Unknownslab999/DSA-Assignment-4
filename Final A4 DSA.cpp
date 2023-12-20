@@ -1,5 +1,8 @@
 #include<iostream>
-//#include<cstring>
+//Muhammad Hasnat Rahim
+//47474
+//Sarmad Hassan
+//45724
 using namespace std;
 
 class Stack_Char_Array
