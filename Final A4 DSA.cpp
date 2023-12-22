@@ -231,7 +231,7 @@ class Stack_Char_Linked_List
 		}
 };
 
-bool L_Parenthesis_Balanced(char* exp)
+bool Is_Parenthesis_Balanced(char* exp)
 {
     Stack_Char_Linked_List stack;
     int i = 0;
@@ -262,7 +262,7 @@ bool L_Parenthesis_Balanced(char* exp)
     return stack.Is_Empty();
 }
 
-int L_Precedence(char x)
+int TotalPrecedence(char x)
 {
     if (x == '+' || x == '-')
         return 1;
@@ -271,7 +271,7 @@ int L_Precedence(char x)
     return 0;
 }
 
-bool L_Is_Operand(char x)
+bool Chk_is_Operand(char x)
 {
     if (x == '+' || x == '-' || x == '*' || x == '/')
         return false;
@@ -279,7 +279,7 @@ bool L_Is_Operand(char x)
         return true;
 }
 
-char* L_Infix_To_PostFix(char* infix)
+char* con_InfixtoPostfix(char* infix)
 {
     int i = 0, j = 0;
     Stack_Char_Linked_List stack;
@@ -288,11 +288,11 @@ char* L_Infix_To_PostFix(char* infix)
 
     while (infix[i] != '\0')
 	{
-        if (L_Is_Operand(infix[i]))
+        if (Chk_is_Operand(infix[i]))
             postfix[j++] = infix[i++];
         else
 		{
-            if (L_Precedence(infix[i]) > L_Precedence(stack.peek()))
+            if (TotalPrecedence(infix[i]) > TotalPrecedence(stack.peek()))
                 stack.push(infix[i++]);
             else
                 postfix[j++] = stack.pop();
@@ -811,7 +811,7 @@ void MenuSL()
             		cout<<"ENTER EXPRESSION :- ";
 					cin.ignore();
 					cin.getline(exp,100);
-					cout<<"Is "<<exp<<" Balanced :- "<< (L_Parenthesis_Balanced(exp)? "Yes" : "No")<<endl;
+					cout<<"Is "<<exp<<" Balanced :- "<< (Is_Parenthesis_Balanced(exp)? "Yes" : "No")<<endl;
 					system("PAUSE");
 				}
             	break;
@@ -824,7 +824,7 @@ void MenuSL()
 	            	cin.getline(infix,100);
 					Infix_To_PostFix(infix);
 	    			cout<<"Infix: " <<infix<<endl;
-	    			cout<<"Postfix: "<<L_Infix_To_PostFix(infix)<<endl;
+	    			cout<<"Postfix: "<<con_InfixtoPostfix(infix)<<endl;
 					system("PAUSE");
 				}
             	break;
